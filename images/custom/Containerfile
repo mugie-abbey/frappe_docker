@@ -34,6 +34,7 @@ RUN useradd -ms /bin/bash frappe \
     jq \
     xvfb \
     libfontconfig \
+    wkhtmltopdf \
     # NodeJS
     && mkdir -p ${NVM_DIR} \
     && curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.2/install.sh | bash \
@@ -51,7 +52,7 @@ RUN useradd -ms /bin/bash frappe \
     && if [ "$(uname -m)" = "x86_64" ]; then export ARCH=amd64; fi \
     && downloaded_file=wkhtmltox_$WKHTMLTOPDF_VERSION.buster_${ARCH}.deb \
     && curl -sLO https://github.com/wkhtmltopdf/packaging/releases/download/$WKHTMLTOPDF_VERSION/$downloaded_file \
-    && apt-get install -y ./$downloaded_file \
+#     && apt-get install -y ./$downloaded_file \
     && rm $downloaded_file \
     # Clean up
     && rm -rf /var/lib/apt/lists/* \

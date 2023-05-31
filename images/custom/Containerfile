@@ -32,8 +32,6 @@ RUN useradd -ms /bin/bash frappe \
     # For healthcheck
     wait-for-it \
     jq \
-    xvfb \
-    libfontconfig \
     # NodeJS
     && mkdir -p ${NVM_DIR} \
     && curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.2/install.sh | bash \
@@ -93,6 +91,8 @@ RUN apt-get update \
     gcc \
     build-essential \
     libbz2-dev \
+    xvfb \
+    libfontconfig \
     && rm -rf /var/lib/apt/lists/*
 
 # apps.json includes
